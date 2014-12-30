@@ -2,7 +2,7 @@ package br.com.schumaker.core;
 
 import br.com.schumaker.model.User;
 import br.com.schumaker.network.HsCommons;
-import br.com.schumaker.network.MessageRX;
+import br.com.schumaker.network.MessageHub;
 import br.com.schumaker.network.ServiceLocator;
 import java.util.ArrayList;
 
@@ -25,7 +25,7 @@ public class Engine implements Runnable {
 
     public synchronized void addUser(User u) {
         list.add(u);
-        printList();
+        //printList();
     }
 
     public ArrayList<User> getList() {
@@ -43,7 +43,7 @@ public class Engine implements Runnable {
         System.out.println("Starting server...");
         System.out.println("Buffer size: " + HsCommons.BUFFER);
         new ServiceLocator().start();
-        new MessageRX();
+        new MessageHub();
     }
 
     public void start() {

@@ -13,11 +13,11 @@ import java.net.Socket;
  *
  * @author hudson schumaker
  */
-public class MessageRxSession extends Thread {
+public class MessageHubSession extends Thread {
 
     private Socket socket = null;
 
-    public MessageRxSession(Socket socket) {
+    public MessageHubSession(Socket socket) {
         this.socket = socket;
     }
 
@@ -45,9 +45,10 @@ public class MessageRxSession extends Thread {
             boolean done = false;
 //            while (!done) {
             String line = dis.readUTF();
-            out.println(line);
-            System.out.println(line);
+           // out.println(line);
+           
             tramsmit(line);
+             System.out.println("l: "+line);
 //            }
             inps.close();
             outs.close();

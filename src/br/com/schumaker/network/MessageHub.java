@@ -7,28 +7,29 @@ import java.net.Socket;
  *
  * @author hudson schumaker
  */
-public class MessageRX {
+public class MessageHub {
 
     private boolean run;
     public static ServerSocket server;
     public static Socket incoming;
 
-    public MessageRX() {
+    public MessageHub() {
         try {
             server = new ServerSocket(HsCommons.RXPORT);
             run = true;
-            System.out.println("> MesssageRX service running...");
-            System.out.println("> MesssageRX listening on port: " + HsCommons.RXPORT);
+            System.out.println("> MesssageHub service running...");
+            System.out.println("> MesssageHub listening on port: " + HsCommons.RXPORT);
         } catch (Exception e) {
-            System.err.println("MessageRX:\n" + e);
+            System.err.println("MessageHub:\n" + e);
         }
-        while (isRun()) {
+        while (run) {
             try {
                 incoming = server.accept();
-                System.out.println("Client IP: " + incoming.getInetAddress());
-                new MessageRxSession(incoming).start();
+                System.out.println("Client IPx: " + incoming.getInetAddress());
+                System.out.println("Client Port: " + incoming.getPort());
+                new MessageHubSession(incoming).start();
             } catch (Exception e) {
-                System.err.println("MessageRX2:\n" + e);
+                System.err.println("MessageHub2:\n" + e);
             }
         }
     }
