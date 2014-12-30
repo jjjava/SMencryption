@@ -17,13 +17,13 @@ public class MessageRX {
         try {
             server = new ServerSocket(HsCommons.RXPORT);
             run = true;
+            System.out.println("> MesssageRX service running...");
+            System.out.println("> MesssageRX listening on port: " + HsCommons.RXPORT);
         } catch (Exception e) {
             System.err.println("MessageRX:\n" + e);
         }
         while (isRun()) {
             try {
-                System.out.println("> MesssageRX service running...");
-                System.out.println("> MesssageRX listening on port: " + HsCommons.RXPORT);
                 incoming = server.accept();
                 System.out.println("Client IP: " + incoming.getInetAddress());
                 new MessageRxSession(incoming).start();
