@@ -41,15 +41,8 @@ public class MessageHubSession extends Thread {
             OutputStream outs = socket.getOutputStream();
             DataInputStream dis = new DataInputStream(inps);
             PrintWriter out = new PrintWriter(outs, true);
-            //out.println("> Connected to server...");
-            boolean done = false;
-//            while (!done) {
             String line = dis.readUTF();
-           // out.println(line);
-           
             tramsmit(line);
-             System.out.println("l: "+line);
-//            }
             inps.close();
             outs.close();
             dis.close();
