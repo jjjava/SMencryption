@@ -1,9 +1,6 @@
 package br.com.schumaker.network;
 
-import br.com.schumaker.core.Engine;
-import br.com.schumaker.model.User;
 import java.io.DataInputStream;
-import java.io.DataOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
@@ -22,16 +19,7 @@ public class MessageHubSession extends Thread {
     }
 
     private void tramsmit(String line) {
-        for (User u : Engine.getInstance().getList()) {
-            try {
-                Socket conexao = new Socket(u.getIp(), HsCommons.TXPORT);
-                DataOutputStream saida = new DataOutputStream(conexao.getOutputStream());
-                saida.writeUTF(line);
-                conexao.close();
-            } catch (Exception exc) {
-                System.out.println(exc.toString());
-            }
-        }
+        new CourrierMoyeu(line).start();
     }
 
     @Override
