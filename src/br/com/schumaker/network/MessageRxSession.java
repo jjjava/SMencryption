@@ -26,7 +26,7 @@ public class MessageRxSession extends Thread {
             try {
                 Socket conexao = new Socket(u.getIp(), HsCommons.TXPORT);
                 DataOutputStream saida = new DataOutputStream(conexao.getOutputStream());
-                saida.writeUTF(u.getName() + ":" + line);
+                saida.writeUTF(line);
                 conexao.close();
             } catch (Exception exc) {
                 System.out.println(exc.toString());
