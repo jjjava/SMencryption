@@ -4,11 +4,12 @@ import br.com.schumaker.model.User;
 import br.com.schumaker.network.HsCommons;
 import br.com.schumaker.network.MessageHub;
 import br.com.schumaker.network.ServiceLocator;
+import br.com.schumaker.util.Scheduler;
 import java.util.ArrayList;
 
 /**
  *
- * @author hudson schumaker
+ * @author hudson schumaker Server
  */
 public class Engine implements Runnable {
 
@@ -28,6 +29,10 @@ public class Engine implements Runnable {
         //printList();
     }
 
+    public synchronized void removeUser(User u) {
+        list.remove(u);
+    }
+
     public ArrayList<User> getList() {
         return list;
     }
@@ -43,6 +48,7 @@ public class Engine implements Runnable {
         System.out.println("Starting server...");
         System.out.println("Buffer size: " + HsCommons.BUFFER);
         new ServiceLocator().start();
+        new Scheduler().start();
         new MessageHub();
     }
 

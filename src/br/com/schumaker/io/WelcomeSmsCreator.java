@@ -7,6 +7,7 @@ import java.net.UnknownHostException;
 /**
  *
  * @author hudson schumaker
+ * Server
  */
 public class WelcomeSmsCreator {
 

@@ -10,6 +10,7 @@ import java.net.InetAddress;
 /**
  *
  * @author hudson schumaker
+ * Server
  */
 public class ServiceLocator implements Runnable {
 
