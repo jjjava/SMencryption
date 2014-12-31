@@ -48,6 +48,7 @@ public class Engine implements Runnable {
 
     public void start() {
         Thread thread = new Thread(this);
+        thread.setName("Engine");
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
     }

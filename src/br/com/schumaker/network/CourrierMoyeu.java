@@ -37,6 +37,7 @@ public class CourrierMoyeu implements Runnable {
 
     public void start() {
         Thread thread = new Thread(this);
+        thread.setName("Courrier");
         thread.setPriority(Thread.MAX_PRIORITY);
         thread.start();
     }

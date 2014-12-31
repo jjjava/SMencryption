@@ -16,6 +16,7 @@ public class MessageHubSession extends Thread {
 
     public MessageHubSession(Socket socket) {
         this.socket = socket;
+        this.setName("MessageHubSession");
     }
 
     private void tramsmit(String line) {

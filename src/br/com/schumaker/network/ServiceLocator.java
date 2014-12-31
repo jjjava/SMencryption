@@ -17,6 +17,7 @@ public class ServiceLocator implements Runnable {
 
     public void start() {
         Thread thread = new Thread(this);
+        thread.setName("ServiceLocator");
         thread.setPriority(Thread.MIN_PRIORITY);
         setRun(true);
         thread.start();
